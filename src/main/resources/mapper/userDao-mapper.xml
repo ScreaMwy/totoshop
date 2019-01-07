@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.totoshop.dao.UserDao">
+	<select id="find" resultType="org.totoshop.pojo.User">
+		select totoshop_user.U_ID, totoshop_user.U_NAME, totoshop_user.U_PASSWORD, totoshop_user.U_ADDRESS, totoshop_user.U_SEX, totoshop_user.U_CREATE_TIME, totoshop_user.U_EDIT_TIME
+		from totoshop_user
+		order by totoshop_user.U_ID
+		desc
+	</select>
+	<select id="findById" resultType="org.totoshop.pojo.User">
+		select totoshop_user.U_ID, totoshop_user.U_NAME, totoshop_user.U_PASSWORD, totoshop_user.U_PHONE, totoshop_user.U_ADDRESS, totoshop_user.U_SEX, totoshop_user.U_CREATE_TIME, totoshop_user.U_EDIT_TIME
+		from totoshop_user
+		where totoshop_user.U_ID = #{uId} and totoshop_user.U_PASSWORD = #{uPassword}
+	</select>
+	<select id="findByName" resultType="org.totoshop.pojo.User">
+		select totoshop_user.U_ID, totoshop_user.U_NAME, totoshop_user.U_PASSWORD, totoshop_user.U_PHONE, totoshop_user.U_ADDRESS, totoshop_user.U_SEX, totoshop_user.U_CREATE_TIME, totoshop_user.U_EDIT_TIME
+		from totoshop_user
+		where totoshop_user.U_Name = #{uName} and totoshop_user.U_PASSWORD = #{uPassword}
+	</select>
+	<insert id="add" useGeneratedKeys="false">
+		<!-- 配置自動生成主鍵： <selectKey keyProperty="uid" keyColumn="U_ID" order="BEFORE" statementType="PREPARED" resultType="java.lang.String">
+			select max(totoshop_user.U_ID) + 1
+			from totoshop_user
+		</selectKey> -->
+		insert into totoshop_user(U_ID, U_NAME, U_PASSWORD, U_PHONE, U_ADDRESS, U_SEX, U_CREATE_TIME, U_EDIT_TIME) 
+		values (#{uId}, #{uName}, #{uPassword}, #{uPhone}, #{uAddress}, #{uSex}, #{uCreateTime}, #{uEditTime})
+	</insert>
+	<update id="update" useGeneratedKeys="false">
+		update totoshop_user
+		<set>
+			<if test="null != #{uName}">totoshop_user.U_NAME = #{uName}</if>
+			<if test="null != #{uPassword}">totoshop_user.U_PASSWORD = #{uPassword}</if>
+			<if test="null != #{uPhone}">totoshop_user.U_PHONE = #{uPhone}</if>
+			<if test="null != #{uAddress}">totoshop_user.U_ADDRESS = #{uAddress}</if>
+			<if test="null != #{uSex}">totoshop_user.U_SEX = #{uSex}</if>
+			<if test="null != #{uEditTime}">totoshop_user.U_EDIT_TIME = #{uEditTime}</if>
+		</set>
+		where totoshop_user.U_ID = #{uId}
+	</update>
+	<delete id="delete">
+		delete 
+		from totoshop_user
+		where totoshop_user.U_ID = #{uId};
+	</delete>
+</mapper>
