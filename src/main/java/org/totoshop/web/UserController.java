@@ -29,7 +29,7 @@ import org.totoshop.util.multipart.FileTransfer;
 
 @Controller("userController")
 @Scope(scopeName = "singleton")
-@RequestMapping(path = {"/user", "/user/"})
+@RequestMapping(path = {"/"})
 public class UserController {
     @Resource(name = "fileTransfer", type = FileTransfer.class)
     private FileTransfer fileTransfer;
@@ -41,17 +41,17 @@ public class UserController {
     @Resource(name = "userService", type = UserService.class)
     private UserService userService;
 
-    @RequestMapping(path = {"/main", "/main/"}, method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(path = {"/userLogin", "/userLogin/"}, method = {RequestMethod.POST, RequestMethod.GET})
     private String userMain() {
         return "user";
     }
 
-    @RequestMapping(path = {"/userShow"}, method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(path = {"/userShow", "/userShow/"}, method = {RequestMethod.POST, RequestMethod.GET})
     private String showUser() {
         return "show";
     }
 
-    @RequestMapping(path = {"/login"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/doLogin", "/doLogin/"}, method = {RequestMethod.POST})
     @ResponseBody
     private Map<String, Object> userLogin(@RequestParam(name = "username", required = false) String userid, @RequestParam(name = "password", required = false) String password, HttpServletRequest request) {
         user = userService.findUser(userid, password);

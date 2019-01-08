@@ -25,7 +25,6 @@ import org.totoshop.util.AnnotationParse;
 @Configuration // 相当于<beans/>和标签中的约束，命名空间
 @EnableWebMvc // 相当于xml中的<mvc:annotation-driven/>
 @ComponentScan(basePackages = {"org.totoshop.web"})
-@SuppressWarnings({"unused"})
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 	@Value("${viewPrefix}")
 	private String prefix;

@@ -24,7 +24,7 @@
 				<div class="container">
 					<h1>Welcome</h1>
 					
-					<form class="form" action="${pageContext.request.contextPath}/user/login" method="post">
+					<form class="form" action="${pageContext.request.contextPath}/doLogin" method="post">
 						<input name="username" type="text" placeholder="Username">
 						<input name="password" type="password" placeholder="Password">
 						<button type="submit" id="login-button">Login</button>
