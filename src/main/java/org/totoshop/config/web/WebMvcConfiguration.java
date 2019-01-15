@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.JstlView;
 import org.totoshop.util.annotation.Values;
 import org.totoshop.util.AnnotationParse;
 
-@Configuration // 相当于<beans/>和标签中的约束，命名空间
+@Configuration // 相当于<beans>和标签中的约束，命名空间
 @EnableWebMvc // 相当于xml中的<mvc:annotation-driven/>
 @ComponentScan(basePackages = {"org.totoshop.web"})
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {

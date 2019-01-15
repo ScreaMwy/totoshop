@@ -23,7 +23,7 @@ import org.mybatis.spring.annotation.MapperScan;
 
 @Configuration
 @MapperScan(basePackages = {"org.totoshop.dao"}) // 等價于在每個dao接口/實現類中使用@Mapper：作用：告訴SpringIoC這是與xxxdao-mapper.xml文件相互對應的dao層
-public class MbSessionFactoryConfiguration {
+public class SessionFactoryConfiguration {
 	@Resource(name = "dataSource", type = DataSource.class)
 	private DataSource dataSource;
 	

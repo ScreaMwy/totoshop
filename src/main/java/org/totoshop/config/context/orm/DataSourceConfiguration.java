@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Scope;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
-public class MbDataSourceConfiguration {
+public class DataSourceConfiguration {
 	private ComboPooledDataSource comboPooledDataSource;
 	
 	@Value("${jdbc.connection.driverClass}")
