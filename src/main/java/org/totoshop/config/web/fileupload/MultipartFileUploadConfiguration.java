@@ -13,8 +13,8 @@ public class MultipartFileUploadConfiguration {
 	private final String DEFAULT_ENCODING = "utf-8"; // 默認的編碼方式 
 	
 	private CommonsMultipartResolver multipartResolver;	
-	
-	@Bean(name = {"multipartResolver"}, autowire = Autowire.NO)
+
+	@Bean(name = {"multipartResolver"}, autowire = Autowire.BY_NAME)
 	@Scope(scopeName = "singleton")
 	public CommonsMultipartResolver commonsMultipartResolver() {
 		multipartResolver = new CommonsMultipartResolver();

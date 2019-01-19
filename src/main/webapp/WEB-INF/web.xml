@@ -5,6 +5,8 @@
 	      version="3.0">
 	<display-name>totoshop</display-name>
 
+	// Spring的全局配置（Context）-> Servlet的配置 -> WebApplication的監聽器配置
+
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>

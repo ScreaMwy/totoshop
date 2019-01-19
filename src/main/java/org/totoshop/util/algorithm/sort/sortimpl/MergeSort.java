@@ -1,8 +1,7 @@
-package org.totoshop.util.algorithm.sortimpl;
+package org.totoshop.util.algorithm.sort.sortimpl;
 
+import org.totoshop.util.algorithm.sort.Sort;
 import java.util.Arrays;
-
-import org.totoshop.util.algorithm.Sort;
 
 public class MergeSort implements Sort {
     private static final int MAX_NUM = (int) Math.pow(2.00, 10000.00);
@@ -17,10 +16,11 @@ public class MergeSort implements Sort {
         if (null == MERGE_SORT_INSTANCE) {
             MERGE_SORT_INSTANCE = new MergeSort();
         }
+
         return MERGE_SORT_INSTANCE;
     }
 
-    private boolean merge_soilder(int[] array, int left, int mid, int right) {
+    private boolean mergeSoilder(int[] array, int left, int mid, int right) {
         //
         final int LEFT_ARRAY_SIZE = mid - left + 1;
         final int RIGHT_ARRAY_SIZE = right - mid;
@@ -55,14 +55,15 @@ public class MergeSort implements Sort {
         return true;
     }
 
-    public boolean sort_soilder(int[] array, int left, int right) {
+    public boolean sortSoilder(int[] array, int left, int right) {
         int mid = 0;
         if (left < right) {
             mid = (left + right) / 2;
-            sort_soilder(array, left, mid);
-            sort_soilder(array, mid + 1, right);
-            merge_soilder(array,left, mid, right);
+            sortSoilder(array, left, mid);
+            sortSoilder(array, mid + 1, right);
+            mergeSoilder(array,left, mid, right);
         }
+
         return true;
     }
 
@@ -114,6 +115,7 @@ public class MergeSort implements Sort {
             sort(array, mid + 1, right);
             merge(array, left, mid, right);
         }
+
         return true;
     }
 
