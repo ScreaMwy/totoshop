@@ -46,7 +46,7 @@ public class DemoTest {
 
 		System.out.printf("------------------------------------\n");
 
-		seqList.insert(insertLocation, "data-0");
+		seqList.deleteOfData("data-0");
 		seqList.display();
 
 		System.out.printf("------------------------------------\n");

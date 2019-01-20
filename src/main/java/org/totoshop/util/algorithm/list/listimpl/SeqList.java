@@ -66,7 +66,7 @@ public class SeqList implements List {
      * @return Status
      */
     public Status insert(int location, Object data) {
-        if (location < 0 || location > listSize + 1) {
+        if (location <= 0 || location > this.listSize + 1) {
             return Status.ERROR;
         }
 
@@ -88,10 +88,32 @@ public class SeqList implements List {
      * 刪除元素
      * @return Status
      */
-    public Status delete(int location, Object data) {
-        return null;
+    public Status delete(int location) {
+        if (location <= 0 || location > this.length + 1) {
+            return Status.ERROR;
+        }
+
+        int index = location - 1;
+        for (int i = index; i < this.length - 1; i++) {
+            this.seqList[i] = this.seqList[i + 1];
+        }
+
+        this.length--;
+        return Status.OK;
     }
 
+    public Status deleteOfData(Object data) {
+        for (int i = 0; i < this.length; i++) {
+            if (data == this.seqList[i]) {
+                int location = i + 1;
+                delete(location);
+                return Status.OK;
+            }
+        }
+
+        System.err.printf("元素不存在，無法刪除...\n");
+        return Status.ERROR;
+    }
 
     /**
      * 銷毀順序表
@@ -138,7 +160,7 @@ public class SeqList implements List {
         for (int i = 0; ; i++) {
             string.append(seqList[i]);
             if (i == MaxSize) {
-                return string.append("}").toString();
+                return string.append("}\n").toString();
             }
 
             string.append(", ");
@@ -148,7 +170,7 @@ public class SeqList implements List {
     @Override
     public void display() {
         String s = toString();
-        System.out.printf("順序表：%s\n", s);
+        System.out.printf("順序表：%s", s);
         System.out.printf("順序表的元素個數：%d\n", this.length);
         System.out.printf("順序表長度：%d\n", this.listSize);
     }
