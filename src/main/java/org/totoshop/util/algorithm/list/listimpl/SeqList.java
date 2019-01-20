@@ -71,7 +71,7 @@ public class SeqList implements List {
         }
 
         if (this.length >= this.listSize) {
-            realloc();
+            this.seqList = realloc();
         }
 
         int index = location - 1;
@@ -110,7 +110,7 @@ public class SeqList implements List {
     /**
      * @return newSeqList
      */
-    private Status realloc() {
+    private Object[] realloc() {
         int newListSize = this.listSize + LIST_INCREMENT;
         Object[] newSeqList = new Object[newListSize];
 
@@ -119,8 +119,7 @@ public class SeqList implements List {
         }
 
         this.listSize = newListSize;
-        this.seqList = newSeqList;
-        return Status.OK;
+        return newSeqList;
     }
 
     @Override
